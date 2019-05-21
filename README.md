@@ -1,0 +1,2 @@
+# Jquery-mobile_APP_foodANDsports
+課堂作業的作品，是一個紀錄運動與飲食熱量的APP
