@@ -1,0 +1,653 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <!--
+        視需要在下方的中繼標籤中自訂內容安全性原則。將 'unsafe-inline' 加入 default-src 以啟用內嵌 JavaScript。
+        如需詳細資料，請參閱 http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link href="themes/final.min.css" rel="stylesheet" />
+    <link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+    <link href="css/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="scripts/jquery-2.2.4.min.js"></script>
+    <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+    <title>食健APP</title>
+
+</head>	
+<body>
+    <div data-role="page" id="openPage1" align="center" valign="center" style="background-color:#3388cc;">
+        <div data-role="main" class="ui-content">
+            <img src="./images/00.png" style="width:80%;height:auto;padding-top:20%;">
+        </div>
+    </div>
+
+    <div data-role="page" id="openPage" align="center" valign="center">
+        <div data-role="header">
+            <h1>歡迎使用食健APP</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+
+            <p>
+                本APP提供想要控制飲食的食物熱量計算器，<br>以及方便使用的運動計畫和TDEE計算器(根據活動量計算一天所需熱量)，<br>
+                接下來請輸入基本資料已方便計算您的每日熱量。
+            </p>
+
+
+            <a href="#data" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">開始填寫資料</a><br>
+            <div data-role="footer" data-position="fixed" data-theme="a" data-id="main-footer">
+                <h3>製作人 <br> 文化大學資工3A A5249212 陳嘉鴻</h3><br>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="data">
+        <div data-role="header">
+            <h1>食健APP-基本資料</h1>
+        </div>
+        <div data-rolr="main" class="ui-content">
+            <form id="form">
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="quantity">使用者暱稱： </label>
+                            <input type="text" name="id" id="id">
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="quantity">年齡： </label>
+                            <input type="text" name="age" id="age">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="quantity">身高(CM)： </label>
+                            <input type="text" name="height" id="height">
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="quantity">體重(KG)： </label>
+                            <input type="text" name="weight" id="weight">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="sex">性別： </label>
+                            <select name="sex" id="sex">
+                                <option value="男性">男性</option>
+                                <option value="女性">女性</option>
+                            </select>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:60%;">
+                            <label for="aex">你的活動量： </label>
+                            <select name="aex" id="aex">
+                                <option value="沒在運動">沒在運動</option>
+                                <option value="一周1~3天(輕度)">一周1~3天(輕度)</option>
+                                <option value="一周3~5天(中度)">一周3~5天(中度)</option>
+                                <option value="一周5~7天(高度)">一周5~7天(高度)</option>
+                                <option value="都在運動(超高度)">都在運動(超高度)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="BMR">基礎代謝率BMR：  </label>
+                            <p name="BMR" id="BMR"></p>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="TDEE">每日總消耗熱量TDEE： </label>
+                            <p name="TDEE" id="TDEE"></p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#first" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="save" id="save">完成</a><br>
+                <a href="#first" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="save1" id="save1" style="display:none">完成</a>
+                <a href="#first" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="back" id="back" style="display:none">取消</a><br>
+            </form>
+        </div>
+
+    </div>
+    <div data-role="page" id="first">
+        <div data-role="header">
+            <h1>食健APP</h1>
+        </div>
+        <div data-rolr="main" class="ui-content">
+            <form>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="dataID">使用者暱稱： </label>
+                            <p name="dataID" id="dataID"></p>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="quantity">年齡： </label>
+                            <p name="dataAge" id="dataAge"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="quantity">身高(CM)： </label>
+                            <p type="text" name="dataHeight" id="dataHeight"></p>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="quantity">體重(KG)： </label>
+                            <p name="dataWeight" id="dataWeight"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="sex">性別： </label>
+                            <p name="dataSex" id="dataSex"> </p>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:60%;">
+                            <label for="aex">你的活動量： </label>
+                            <p name="dataAex" id="dataAex"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="BMR">基礎代謝率BMR：  </label>
+                            <p name="dataBMR" id="dataBMR"></p>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="TDEE">每日總消耗熱量TDEE： </label>
+                            <p name="dataTDEE" id="dataTDEE"></p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#data" id="editData" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">修改 </a><br>
+            </form>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#first" id="dataPage" class="ui-btn-active ui-state-persist" data-icon="user" data-transition="slide">我的資料</a></li>
+                        <li><a href="#plan" id="planPage" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                        <li><a href="#food" id="foodPage" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                        <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div data-role="page" id="food">
+        <div data-role="header">
+            <h1>飲食管理</h1>
+        </div>
+        <div data-rolr="main" class="ui-content">
+
+            <p>這裡可以查看您一天的熱量，並可以記錄今天吃了甚麼</p>
+            <div class="ui-field-contain">
+                <label for="total">您的每日總消耗熱量TDEE： </label>
+                <p id="FOOD_TDEE" name="FOOD_TDEE"></p>
+            </div>
+            <div data-role="collapsible-set">
+                <div data-role="collapsible">
+                    <h3>早餐</h3>
+                    <a href="#food1" id="bf" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">新增食物</a>
+                    <ul id="bfD" data-role="listview" data-inset="true"></ul>
+                </div>
+                <div data-role="collapsible">
+                    <h3>午餐</h3>
+                    <a href="#food1" id="lh" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">新增食物</a>
+                    <ul id="lhD" data-role="listview" data-inset="true"></ul>
+                </div>
+                <div data-role="collapsible">
+                    <h3>晚餐</h3>
+                    <a href="#food1" id="dr" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">新增食物</a>
+                    <ul id="drD" data-role="listview" data-inset="true"></ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" class="ui-btn-active ui-state-persist" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="food1">
+        <div data-role="header">
+            <h1>飲食管理</h1>
+        </div>
+        <p id="fd" style="display:none">
+            <div data-rolr="main" class="ui-content">
+
+                <ul id="foodList" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="搜尋食物名稱"></ul>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                        <li><a href="#plan" id="planPage" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                        <li><a href="#food" id="foodPage" class="ui-btn-active ui-state-persist" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                        <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+    <div data-role="page" id="food2">
+        <div data-role="header">
+            <h1>飲食管理</h1>
+        </div>
+        <div data-rolr="main" class="ui-content">
+            <div class="ui-grid-b">
+                <div class="ui-block-a" style="width:35%;">
+                    <label for="quantity">食物名稱： </label>
+                    <p name="foodName" id="foodName">
+                </div>
+                <div class="ui-block-b" style="width:5%;"></div>
+                <div class="ui-block-c" style="width:35%;">
+                    <label for="quantity">每100克熱量： </label>
+                    <p name="kcal" id="kcal">
+                </div>
+            </div>
+            <div class="ui-grid-b">
+                <div class="ui-block-a" style="width:35%;">
+                    <label for="quantity">攝取的熱量： </label>
+                    <p name="kcal2" id="kcal2">
+                </div>
+                <div class="ui-block-b" style="width:5%;"></div>
+                <div class="ui-block-c" style="width:35%;">
+                    <label for="quantity">份量(克)： </label>
+                    <input type="text" name="g" id="g">
+                </div>
+            </div>
+
+            <a href="#food" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="savefood" id="savefood">完成</a>
+            <a href="#food" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="fback" id="fback">取消</a><br>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" class="ui-btn-active ui-state-persist" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="food3">
+        <div data-role="header">
+            <h1>飲食管理</h1>
+        </div>
+        <div data-rolr="main" class="ui-content">
+            <div data-rolr="main" class="ui-content">
+                <p id="mealD" style="display:none"></p>
+                <div class="ui-grid-b">
+                    <div class="ui-block-a" style="width:35%;">
+                        <label for="quantity">食物名稱： </label>
+                        <p name="foodName3" id="foodName3">
+                    </div>
+                    <div class="ui-block-b" style="width:5%;"></div>
+                    <div class="ui-block-c" style="width:35%;">
+                        <label for="quantity">攝取的熱量： </label>
+                        <p name="kcal3-2" id="kcal3-2">
+                    </div>
+                </div>
+
+                <a href="#food" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="dfood" id="dfood">刪除</a>
+                <a href="#food" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="fback" id="fback">取消</a><br>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" class="ui-btn-active ui-state-persist" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="about">
+        <div data-role="header">
+
+            <h1>關於</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <p>
+                <h2>各種數據解釋:<br><br></h2>
+                <h3>總熱量消耗 TDEE ( Total Daily Energy Expenditure )<br></h3>
+                身體一整天所消耗掉的熱量。也有人稱為維持體重的熱量，因為當攝取的卡路里 = TDEE，體重會維持。<br>
+                <h3>基礎代謝率 BMR（Basal Metabolic Rate）<br></h3>
+                基礎代謝意思是身體為了要維持運作，在休息時消耗掉的熱量。基礎代謝率佔了總熱量消耗的一大部分，大約65-75%左右。<br>
+                會影響到基礎代謝率高低的有很多，像是總體重、肌肉量、賀爾蒙、年齡等。<br>
+                <h4>小提醒!! 無論是健身還是瘦身，都要搭配良好的飲食習慣以及運動喔!!別讓自己餓肚子了!!!!!!!!<br></h4>
+            </p>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" class="ui-btn-active ui-state-persist" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="plan">
+        <div data-role="header">
+
+            <h1>運動計畫</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <p>
+                這裡可以記錄你的運動！還沒開始的話趕快開始吧！
+            </p>
+            <a href="#plan1" id="planStart" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">開始紀錄</a><br>
+            <a href="#plan2" id="SearchStart" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">查詢紀錄</a><br>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" class="ui-btn-active ui-state-persist" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="plan1">
+        <div data-role="header">
+
+            <h1>運動計畫</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <div name="LT" id="LT" style="display:none">
+                <label for="LT">上次紀錄： </label>
+                <ul id="recordList" data-role="listview" data-inset="true" data-theme="b"></ul>
+            </div>
+            <label for="aex">選擇運動類型： </label>
+
+            <div class="ui-grid-b">
+                <div class="ui-block-a" style="width:40%;">
+                    <select name="sports" id="sports">
+                        <option value="請選擇">請選擇</option>
+                        <option value="無氧">無氧</option>
+                        <option value="有氧">有氧</option>
+                    </select>
+                </div>
+            </div>
+            <form id="form01" style="display:none">
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <div id="W1">
+                                <label for="Wname">名稱： </label>
+                                <select name="Wname" id="Wname">
+                                    <option value="請選擇">請選擇</option>
+                                </select>
+                            </div>
+                            <div id="W2" style="display:none">
+                                <label for="Wname2">名稱： </label>
+                                <input type="text" name="Wname2" id="Wname2">
+                            </div>
+                            <div id="Badd" style="display:none">
+                                <a href="#" id="SChange" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">新增項目</a><br>
+                            </div>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;">
+
+                        </div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="frequency">次數： </label>
+                            <input type="text" name="frequency" id="frequency">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="groups">組數： </label>
+                            <input type="text" name="groups" id="groups">
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="Sweight">重量： </label>
+                            <input type="text" name="Sweight" id="Sweight">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:50%;">
+                            <label for="Wdate">日期： </label>
+                            <input type="date" name="Wdate" id="Wdate">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <form id="form02" style="display:none">
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <div id="A1">
+                                <label for="Aname">名稱： </label>
+                                <select name="Aname" id="Aname">
+                                    <option value="請選擇">請選擇</option>
+                                </select>
+                            </div>
+                            <div id="A2" style="display:none">
+                                <label for="Aname2">名稱： </label>
+                                <input type="text" name="Aname2" id="Aname2">
+                            </div>
+                            <div id="Badd2" style="display:none">
+                                <a href="#" id="SChange" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext">新增項目</a><br>
+                            </div>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="Atime">持續時間： </label>
+                            <input type="text" name="Atime" id="Atime">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:40%;">
+                            <label for="strength">強度： </label>
+                            <select name="strength" id="strength">
+                                <option value="請選擇">請選擇</option>
+                                <option value="強">強</option>
+                                <option value="中">中</option>
+                                <option value="弱">弱</option>
+                            </select>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:45%;">
+                            <label for="Adate">日期： </label>
+                            <input type="date" name="Adate" id="Adate">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <a href="#plan" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="savePlan" id="savePlan" style="display:none">完成</a>
+            <a href="#plan" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="Pback" id="Pback" style="display:none">取消</a><br>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" class="ui-btn-active ui-state-persist" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="plan2">
+        <div data-role="header">
+            <h1>運動計畫</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+
+            <label for="aex">選擇運動類型： </label>
+            <div class="ui-grid-b">
+                <div class="ui-block-a" style="width:35%;">
+                    <select name="sports1" id="sports1">
+                        <option value="請選擇">請選擇</option>
+                        <option value="無氧">無氧</option>
+                        <option value="有氧">有氧</option>
+                    </select>
+                </div>
+                <div class="ui-block-b" style="width:5%;">
+
+                </div>
+                <div id="S2" class="ui-block-c" style="width:50%;display:none">
+                    <select name="sports2" id="sports2">
+                        <option value="請選擇">請選擇</option>
+                    </select>
+                </div>
+            </div>
+            <div id="resultDiv" data-role="main" class="ui-content" style="display:none">
+                <ul id="resultT" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="搜尋項目"></ul>
+
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" class="ui-btn-active ui-state-persist" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="plan3">
+        <div data-role="header">
+
+            <h1>運動計畫</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form id="form03" style="display:none">
+                <p id="oldData" style="display:none"></p>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="Wname2">名稱： </label>
+                            <input type="text" name="Sname" id="Sname" readonly="readonly">
+                        </div>
+                        <div class="ui-block-b" style="width:5%;">
+
+                        </div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="frequency">次數： </label>
+                            <input type="text" name="Sfrequency" id="Sfrequency" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="groups">組數： </label>
+                            <input type="text" name="Sgroups" id="Sgroups" readonly="readonly">
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="Sweight">重量： </label>
+                            <input type="text" name="SSweight" id="SSweight" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:50%;">
+                            <label for="Wdate">日期： </label>
+                            <input type="date" name="Sdate" id="Sdate" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <form id="form04" style="display:none">
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="SAname">名稱： </label>
+                            <input type="text" name="SAname" id="SAname" readonly="readonly">
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:35%;">
+                            <label for="Atime">持續時間： </label>
+                            <input type="text" name="SAtime" id="SAtime" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-field-contain">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a" style="width:35%;">
+                            <label for="strength">強度： </label>
+                            <select name="Sstrength" id="Sstrength">
+                                <option value="強">強</option>
+                                <option value="中">中</option>
+                                <option value="弱">弱</option>
+                            </select>
+                        </div>
+                        <div class="ui-block-b" style="width:5%;"></div>
+                        <div class="ui-block-c" style="width:50%;">
+                            <label for="Adate">日期： </label>
+                            <input type="date" name="SAdate" id="SAdate" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <a href="#" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="editS" id="editS">修改</a>
+            <a href="#plan" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="editSSave" id="editSSave" style="display:none">完成</a>
+            <a href="#plan" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="esdelete" id="esdelete" style="display:none">刪除</a>
+            <a href="#plan" class="ui-btn ui-btn-inline ui-icon-plus ui-btnicon-notext" name="esback" id="esback">取消</a><br>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="b" data-id="main-footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#first" id="dataPage" data-icon="user" data-transition="slide">我的資料</a></li>
+                    <li><a href="#plan" id="planPage" class="ui-btn-active ui-state-persist" data-prefetch data-icon="calendar" data-transition="slide">運動計畫</a></li>
+                    <li><a href="#food" id="foodPage" data-icon="edit" data-transition="slide">飲食管理</a></li>
+                    <li><a href="#about" id="aboutPage" data-icon="info" data-transition="slide">關於</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+   
+</body>
+</html>
